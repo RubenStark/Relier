@@ -15,7 +15,6 @@ model Profile {
   id             Int             @id @default(autoincrement())
   user_id        String
   posts          Post[]
-  likes          Post[]          @relation("PostLikes")
   Comment        Comment[]
   temporaryPosts TemporaryPost[]
   Story          Story[]
@@ -27,8 +26,8 @@ model Post {
   authorId    Int
   images      Image[]
   tags        Tag[]
-  likes       Profile[] @relation("PostLikes")
   likes_count Int
+  body        String
   views       Int
   created     DateTime  @default(now())
   updated     DateTime  @updatedAt
@@ -49,7 +48,7 @@ model Image {
 model Tag {
   id     Int    @id @default(autoincrement())
   postId Int
-  post   Post   @relation(fields: [postId], references: [id])
+  post   Post[]
   body   String
 
   @@index([postId])

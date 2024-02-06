@@ -1,7 +1,11 @@
+import PostForm from "./components/post-form";
+
 function CreatePost() {
-    return ( <div>  
-        create
-    </div> );
+  return (
+    <div>
+      <PostForm />
+    </div>
+  );
 }
 
 export default CreatePost;
