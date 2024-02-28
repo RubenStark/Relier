@@ -21,17 +21,17 @@ model Profile {
 }
 
 model Post {
-  id          Int       @id @default(autoincrement())
-  author      Profile   @relation(fields: [authorId], references: [id])
-  authorId    Int
-  images      Image[]
-  tags        Tag[]
-  likes_count Int
-  body        String
-  views       Int
-  created     DateTime  @default(now())
-  updated     DateTime  @updatedAt
-  Comment     Comment[]
+  id       Int       @id @default(autoincrement())
+  author   Profile   @relation(fields: [authorId], references: [id])
+  authorId Int
+  images   Image[]
+  tags     Tag[]
+  likes_count Int    @default(0)
+  body     String
+  views    Int       @default(0)
+  created  DateTime  @default(now())
+  updated  DateTime  @updatedAt
+  Comment  Comment[]
 
   @@index([authorId])
 }
